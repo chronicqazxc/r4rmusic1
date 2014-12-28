@@ -1,0 +1,2 @@
+module DitionHelper
+end
