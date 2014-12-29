@@ -11,14 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141227183656) do
+ActiveRecord::Schema.define(version: 20141229163509) do
 
   create_table "composers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   create_table "editions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "description"
+    t.string   "publisher"
+    t.integer  "year"
+    t.float    "price"
+    t.integer  "work_id"
+  end
+
+  add_index "editions", ["work_id"], name: "index_editions_on_work_id"
+
+  create_table "publishers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,6 +40,10 @@ ActiveRecord::Schema.define(version: 20141227183656) do
   create_table "works", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.integer  "composer_id"
   end
+
+  add_index "works", ["composer_id"], name: "index_works_on_composer_id"
 
 end
