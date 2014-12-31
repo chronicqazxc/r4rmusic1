@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230101429) do
+ActiveRecord::Schema.define(version: 20141230180542) do
 
   create_table "composers", force: true do |t|
     t.datetime "created_at"
@@ -26,13 +26,28 @@ ActiveRecord::Schema.define(version: 20141230101429) do
     t.string   "description"
     t.integer  "year"
     t.float    "price"
-    t.integer  "work_id"
     t.integer  "publisher_id"
     t.string   "title"
   end
 
   add_index "editions", ["publisher_id"], name: "index_editions_on_publisher_id"
-  add_index "editions", ["work_id"], name: "index_editions_on_work_id"
+
+  create_table "editions_works", id: false, force: true do |t|
+    t.integer "edition_id"
+    t.integer "work_id"
+  end
+
+  create_table "instruments", force: true do |t|
+    t.string   "name"
+    t.string   "family"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "instruments_works", id: false, force: true do |t|
+    t.integer "instrument_id"
+    t.integer "work_id"
+  end
 
   create_table "publishers", force: true do |t|
     t.datetime "created_at"
@@ -47,6 +62,9 @@ ActiveRecord::Schema.define(version: 20141230101429) do
     t.datetime "updated_at"
     t.string   "title"
     t.integer  "composer_id"
+    t.integer  "year"
+    t.string   "kee"
+    t.string   "opus"
   end
 
   add_index "works", ["composer_id"], name: "index_works_on_composer_id"
