@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230180542) do
+ActiveRecord::Schema.define(version: 20141231034235) do
 
   create_table "composers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+  end
+
+  create_table "customers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "nick"
+    t.string   "password"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "editions", force: true do |t|
@@ -47,6 +57,14 @@ ActiveRecord::Schema.define(version: 20141230180542) do
   create_table "instruments_works", id: false, force: true do |t|
     t.integer "instrument_id"
     t.integer "work_id"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "edition_id"
+    t.integer  "customer_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "publishers", force: true do |t|
