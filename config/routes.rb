@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'instrument/show'
+
   get 'edition/show'
 
   # map.connect '', :controller => "main", :action => "welcome"
