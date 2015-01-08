@@ -1,6 +1,21 @@
 class Composer < ActiveRecord::Base
   has_many :works
   
+  def whole_name
+    middleName =
+    if middle_name
+      middle_name + " "
+    else
+      ""
+    end
+    if middleName == ""
+      wholeName = "whole name 1 " + first_name + last_name
+    else
+      wholeName = "whole name 2 " + first_name + middleName + last_name
+    end
+    wholeName
+  end
+  
   # What editions of this composer's works exist?
   def editions
     works.map {|work| work.editions}.flatten.map

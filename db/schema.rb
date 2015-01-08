@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20141231034235) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
+    t.string   "middle_name"
     t.string   "last_name"
   end
 

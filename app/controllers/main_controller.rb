@@ -1,6 +1,11 @@
 class MainController < ApplicationController
   helper :composer, :work, :instrument
   def welcome    
+    logger.debug "logger test"
+    @works = Work.all
+    for work in @works
+      logger.debug "!@# #{work.title}"
+    end
     @composers = Composer.all.sort_by {
       |c| [c.last_name, c.first_name]
     }
@@ -48,7 +53,7 @@ class MainController < ApplicationController
   
   def self.add_edition(work_id, description, publisher, year, price)
     edition = Edition.new
-    edition.work_id = work_id
+    # edition.work_id = work_id
     edition.description = description
     edition.publisher = publisher
     edition.year = year
