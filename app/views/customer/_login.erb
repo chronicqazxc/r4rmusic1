@@ -1,0 +1,12 @@
+<%# <%= form_tag :controller => "customer", :action => "login", :method => "post" %>			 
+<%#	<p>User name: <%= text_field "customer", "nick"%></p>
+<%#	<p>Password: <%= password_field "customer", "password"%></p>
+<%#	<p><input type="Submit" value="Log in"></p>
+<%# <% end_form_tag %>
+
+<% logger.debug "erb test" %>
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>

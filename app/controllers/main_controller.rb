@@ -1,19 +1,28 @@
 class MainController < ApplicationController
   helper :composer, :work, :instrument
-  def welcome    
+  def welcome
+        
     logger.debug "logger test"
-    @works = Work.all
-    for work in @works
-      logger.debug "!@# #{work.title}"
-    end
+    
     @composers = Composer.all.sort_by {
-      |c| [c.last_name, c.first_name]
+      |c| [c.last_name, c.first_name, c.middle_name]
     }
     if (check_data(@composers) == false)
       welcome
     else
       return @composers
     end
+    
+    @periods = Work.all_periods
+    @instruments = Instrument.all.order("name ASC")    
+  end
+  
+  def show_period
+    @period = params[:id]
+    works = Work.all.select do |work|
+      (work.period == @period) || (work.century == @period)
+    end
+    @editions = Edition.of_works(works)
   end
   
   def check_data(composers)

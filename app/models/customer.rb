@@ -62,4 +62,11 @@ class Customer < ActiveRecord::Base
       order.update
     end
   end
+  
+  def favorites(thing, options)
+    count = options[:count]
+    method_name = "#{thing}_rankings"
+    rankings = self.send(method_name)
+    return ranking[0, count].compact
+  end
 end

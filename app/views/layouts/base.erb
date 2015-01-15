@@ -1,20 +1,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <header>
-	<title>
-		<%= @page_title%>
-	</title>
+	<title><%= @page_title%></title>
+  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  	<%= csrf_meta_tags %>	
 </header>
 <body>
-	<a href="http://localhost:3000">
-	<h1 class="banner">
-		The R4R Music Store
-	</h1>
-	</a>
+	<table>
+		<tr>
+			<td><%= link_to "Home",
+							:controller => "main",
+							:action => "welcome" %></td>				
+			<% if @c %>
+			<td><%= link_to "View cart",
+							:controller => "customer",
+							:action => "view_cart" %></td>
+			<td><%= link_to "Log out",
+							:controller => "customer",
+							:action => "logout" %></td>
+			<% end %>
+		</tr>
+	</table>
+	<h1>The R4R Music Store</h1>
 	<%= yield %>
 	<hr/>
-	<p>
-		Copyright &copy; 2014, R4RMusic
-	</p>
+	<p>Copyright &copy; 2015, R4RMusic</p>		
 </body>
 </html>
