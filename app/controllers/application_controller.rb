@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_customer
   
   def get_customer
+    logger.debug "get customer"
     if session['customer']
       @c = Customer.find(session['customer'])
     end

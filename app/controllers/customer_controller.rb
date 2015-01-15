@@ -1,6 +1,6 @@
 class CustomerController < ApplicationController
   helper :composer, :work, :edition
-  befor_filter :new_customer, :only => ["signup"]
+  # befor_filter :new_customer, :only => ["signup"]
   
   def new_customer
     applicant = params[:customer]

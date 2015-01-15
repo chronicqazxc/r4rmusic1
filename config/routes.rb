@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   get 'work/show'
 
   get 'main/welcome'
+  
+  post 'customer/login'
+  
+  post 'customer/signup'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

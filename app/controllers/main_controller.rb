@@ -1,7 +1,6 @@
 class MainController < ApplicationController
   helper :composer, :work, :instrument
   def welcome
-        
     logger.debug "logger test"
     
     @composers = Composer.all.sort_by {
