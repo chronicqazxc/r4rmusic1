@@ -61,7 +61,7 @@ class MainController < ApplicationController
   
   def self.add_edition(work_id, description, publisher, year, price)
     edition = Edition.new
-    # edition.work_id = work_id
+    edition.work_id = work_id
     edition.description = description
     edition.publisher = publisher
     edition.year = year

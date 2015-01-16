@@ -1,5 +1,5 @@
 class Customer < ActiveRecord::Base
-  has_many :orders, :dependent => true, :order => "created at ASC"
+  has_many :orders, -> { order('created at ASC') }#, :dependent => true
   
   # Which customers have ordered this work?
   def open_orders
