@@ -1,5 +1,5 @@
 class Customer < ActiveRecord::Base
-  has_many :orders, -> { order('created at ASC') }#, :dependent => true
+  has_many :orders, -> { order('created_at ASC') }#, :dependent => true
   
   # Which customers have ordered this work?
   def open_orders
@@ -21,6 +21,10 @@ class Customer < ActiveRecord::Base
   # What works does this customer have on order?
   def works_on_order
     edtions_on_order.map {|editon| edtion.works}.flatten.uniq
+  end
+  
+  def edition_history
+    orders.map {|order| order.edition }.uniq
   end
   
   # What works has this customer ever ordered?
@@ -67,6 +71,6 @@ class Customer < ActiveRecord::Base
     count = options[:count]
     method_name = "#{thing}_rankings"
     rankings = self.send(method_name)
-    return ranking[0, count].compact
+    return rankings[0, count].compact
   end
 end

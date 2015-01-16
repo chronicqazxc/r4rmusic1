@@ -16,8 +16,12 @@ class CustomerController < ApplicationController
     redirect_to :controller => "main", :action => "welcome"
   end
   
+  #http://stackoverflow.com/questions/17335329/activemodelforbiddenattributeserror-when-creating-new-user
+  def customer_params
+    params.require(:customer).permit(:first_name, :last_name, :nick, :password, :email)
+  end
   def signup
-    c = Customer.new(params[:customer])
+    c = Customer.new(customer_params)
     c.password = Digest::SHA1.hexdigest(c.password)
     c.save
     session['customer'] = c.id

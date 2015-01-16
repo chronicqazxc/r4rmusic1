@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   
   post 'customer/signup'
 
+  get 'customer/view_cart'
+  
+  get 'customer/logout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
