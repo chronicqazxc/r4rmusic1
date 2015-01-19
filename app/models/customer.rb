@@ -3,11 +3,15 @@ class Customer < ActiveRecord::Base
   
   # Which customers have ordered this work?
   def open_orders
-    orders.find(:all, :conditions => "status = 'open'")
+    logger.debug "Person attributes hash:"
+    # orders.find(:all, :conditions => "status = 'open'")
+    # orders.find(:conditions => "status = 'open'")
+    orders.where('status' => 'open')
   end
   
   # What open orders does this customer have?
   def editions_on_order
+    # logger.debug "Person attributes hash:"
     open_orders.map {|order| order.edition}.uniq
   end
   

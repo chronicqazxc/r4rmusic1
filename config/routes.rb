@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get 'customer/view_cart'
   
   get 'customer/logout'
+  
+  get 'customer/check_out'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5,12 +5,13 @@
 	<tr>Price</tr>
 	<tr>Copies</tr>
 	<tr>Subtotal</tr>
-
+	
 <% @c.editions_on_order.each do |edition| %>
 	<% count = @c.copies_of(edition) %>
 	<tr>
 		<td><%= link_to_edition_title(edition) %></td>
-		<td><% edition.composers.each do |composer| %>
+		<td>
+			<% edition.composers.each do |composer| %>
 			<%= link_to_composer(composer) %>
 			<% end %>
 		</td>
@@ -20,10 +21,13 @@
 		<td class="price"><%= two_dec(edition.price * count) %></td>
 	</tr>
 <% end %>
-<tr><td colspan="5">TOTAL</td>
+
+<tr>
+	<td colspan="5">TOTAL</td>
 	<td class="price"><%= two_dec(@c.balance) %></td>
 </tr>
 </table>
+
 <p><%= link_to("Complete purchases",
 				:controller => "customer",
 				:action => "check_out") %></p>
