@@ -1,0 +1,12 @@
+<table border=1>
+	<tr> Add Publisher
+		<td style="hidden:true">
+<%= form_tag :controller => "manage", :action => "add", :method => "post", :class => "123" do %>			 
+	<p>Name: <%= text_field "publisher", "name"%></p>
+	<p>City: <%= text_field "publisher", "city"%></p>
+	<p>Country: <%= text_field "publisher", "country"%></p>	
+	<p><input type="Submit" value="Add"></p>
+<% end %>	
+		</td>
+	</tr>
+</table>

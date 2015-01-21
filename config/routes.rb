@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'manage/main'
+
   get 'instrument/show'
 
   get 'edition/show'
@@ -25,6 +27,8 @@ Rails.application.routes.draw do
   get 'customer/logout'
   
   get 'customer/check_out'
+  
+  post 'manage/add'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
