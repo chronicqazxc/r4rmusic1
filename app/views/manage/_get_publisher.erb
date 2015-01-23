@@ -1,7 +1,9 @@
 <% @publishers.each do |publisher| %>
-<ul>
-	<li>Name: <%= publisher.name%></li>
-	<li>City: <%= publisher.city%></li>
-	<li>Country: <%= publisher.country%></li>
-</ul>
+<%= form_tag :controller => "manage", :action => "edit", :method => "post", :class => "123" do %>
+	<%= text_field "publisher", "id", "value"=>publisher.id %>			 
+	<p>Name: <%= text_field "publisher", "name", "value"=>publisher.name %></p>
+	<p>City: <%= text_field "publisher", "city", "value"=>publisher.city %></p>
+	<p>Country: <%= text_field "publisher", "country", "value"=>publisher.country %></p>	
+	<p><input type="Submit" value="Edit"></p>
+<% end %>		
 <% end %>
