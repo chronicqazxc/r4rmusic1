@@ -14,9 +14,12 @@ class ManageController < ApplicationController
     params.require(:publisher).permit(:id, :name, :city, :country)
   end
   def edit
-    logger.debug "#{params}"
-    p = Publisher.find(id: 2)
-    # publisher.update(name: publisher_edit_params[:publisher][:name], city: publisher_edit_params[:publisher][:city], country: publisher_edit_params[:publisher][:country])
-    # redirect_to :controller => "main", :action => "welcome"
+    # logger.debug "#{params}"
+    # render plain: params['publisher']
+    publisher_params = params['publisher']
+    # render plain: publisher['id']
+    publisher = Publisher.find(publisher_params['id'])
+    publisher.update(name: publisher_params['name'], city: publisher_params['city'], country: publisher_params['country'])
+    redirect_to :controller => "main", :action => "welcome"
   end
 end

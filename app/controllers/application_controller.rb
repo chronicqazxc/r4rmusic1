@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   before_filter :get_customer
   
   def get_customer
-    
     if session['customer']
+      # render plain: session['customer']
       @c = Customer.find(session['customer'])
     end
   end
