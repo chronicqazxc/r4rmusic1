@@ -1,1 +1,4 @@
-<%= button_to "post notify", :controller => "manage", :action => "apns"%>
+<%= form_tag :controller => "manage", :action => "apns", :method => "post", :class => "123" do %>
+	<p>Push content: <%= text_field "apns", "content" %></p>
+	<p><input type="Submit" value="Push Notificate"></p>
+<% end %>

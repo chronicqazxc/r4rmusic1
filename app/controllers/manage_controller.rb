@@ -40,10 +40,10 @@ class ManageController < ApplicationController
     device_token = '<143d27a0 abd66481 8fb03eda 3bac6bb0 0efcaee3 a5d19e65 c4118131 ca9d2111>'
     # device_token = '143d27a0abd664818fb03eda3bac6bb00efcaee3a5d19e65c4118131ca9d2111'
     # device_token = '0143d27a0abd664818fb03eda3bac6bb00efcaee3a5d19e65c4118131ca9d2111'
-
-    APNS.send_notification(device_token, 'Hello iPhone!' )
-
-    APNS.send_notification(device_token, :alert => 'Hello iPhone!', :badge => 5, :sound => 'default')
+    push_params = params['apns']
+    content = push_params[:content]
+    # APNS.send_notification(device_token, content)
+    APNS.send_notification(device_token, :alert => content, :badge => 5, :sound => 'default')
 
 #Houston
 # Environment variables are automatically read, or can be overridden by any specified options. You can also
