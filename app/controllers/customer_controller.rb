@@ -23,9 +23,12 @@ class CustomerController < ApplicationController
         redirect_to :controller => "main", :action => "welcome"
       end
     else
-
     end
-    
+  end
+
+  def logout
+    session['customer'] = nil
+    redirect_to :controller => "main", :action => "welcome"
   end
   
   #http://stackoverflow.com/questions/17335329/activemodelforbiddenattributeserror-when-creating-new-user

@@ -1,4 +1,25 @@
-<%= form_tag :controller => "manage", :action => "apns", :method => "post", :class => "123" do %>
-	<p>Push content: <%= text_field "apns", "content" %></p>
-	<p><input type="Submit" value="Push Notificate"></p>
+<h2>Push remote notification to iPhone!</h2>
+<table border=1>	
+<% if !@is_pem_exist %>
+<tr>
+	<td>
+	<p>Upload your "cert.pem" file</p>
+	<%= form_tag({action: :upload}, multipart: true) do %>
+  	<%= file_field_tag 'pem' %><p>
+  	<%= submit_tag "Upload" %>
+	<% end %>	
+	</td>
+</tr>	
 <% end %>
+
+<% if @is_pem_exist %>
+<tr>
+	<td>
+	<%= form_tag :controller => "manage", :action => "apns", :method => "post", :class => "123" do %>
+		<p>Push content: <%= text_field "apns", "content" %></p>
+		<p><input type="Submit" value="Push Notificate"></p>
+	<% end %>
+	</td>
+</tr>
+<% end %>
+</table>

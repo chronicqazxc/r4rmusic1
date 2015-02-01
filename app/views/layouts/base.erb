@@ -23,11 +23,16 @@
 							:controller => "manage",
 							:action => "main" %></td>
 			<% end %>
+			<td>
+				<%= link_to "Push Notification",
+							:controller => "manage",
+							:action => "push_notification" %>
+			</td>
 		</tr>
 	</table>
-	<h1>The R4R Music Store</h1>
+	<h1>My Rails Playground</h1>
 	<%= yield %>
 	<hr/>
-	<p>Copyright &copy; 2015, R4RMusic</p>		
+	<p>Copyright &copy; 2015, Wayne</p>		
 </body>
 </html>

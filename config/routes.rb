@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   post 'manage/edit'
 
   post 'manage/apns'
+
+  post 'manage/upload'
+
+  get 'manage/push_notification'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

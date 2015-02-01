@@ -27,7 +27,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    apns (1.0.0)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     coffee-rails (4.0.1)
@@ -37,9 +36,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    commander (4.2.1)
+      highline (~> 1.6.11)
     erubis (2.7.0)
     execjs (2.2.2)
+    highline (1.6.21)
     hike (1.2.3)
+    houston (2.2.3)
+      commander (~> 4.1)
+      json
     i18n (0.7.0)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
@@ -54,7 +59,6 @@ GEM
     mime-types (1.25.1)
     minitest (5.5.0)
     multi_json (1.10.1)
-    pg (0.18.1)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -115,11 +119,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  apns
   coffee-rails (~> 4.0.0)
+  houston (~> 2.2.3)
   jbuilder (~> 2.0)
   jquery-rails
-  pg
   rails (= 4.1.4)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
