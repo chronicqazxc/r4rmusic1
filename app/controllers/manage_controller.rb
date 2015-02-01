@@ -1,8 +1,9 @@
 # require 'apns'
 require 'houston'
+require 'net/http'
 
 class ManageController < ApplicationController
-  attr_accessor :pem_file, :is_pem_exist
+  attr_accessor :pem_file, :is_pem_exist, :geocode
 
   def main
     @publishers = Publisher.all
@@ -137,4 +138,17 @@ class ManageController < ApplicationController
   # def whether_pem_exist
   #   @is_pem_exist = File.exist?("#{Rails.root}/public/cert.pem")
   # end  
+
+  def transfor_address
+    address = params[:transfor]
+    address = address[:address]
+    address = URI.escape("http://maps.google.com/maps/api/geocode/json?sensor=false&address=#{address}")
+    address = Net::HTTP.get(URI.parse(address))    
+    # @geocode = JSON.parse address
+    # results = @geocode["results"]
+    # geometry = results[0]["geometry"]
+    # location = geometry["location"]
+    # @geocode = location
+    render plain: address
+  end
 end

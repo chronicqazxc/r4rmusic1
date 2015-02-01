@@ -40,6 +40,7 @@ GEM
       highline (~> 1.6.11)
     erubis (2.7.0)
     execjs (2.2.2)
+    geocoder (1.2.7)
     highline (1.6.21)
     hike (1.2.3)
     houston (2.2.3)
@@ -120,7 +121,8 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  houston (~> 2.2.3)
+  geocoder
+  houston
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.1.4)

@@ -37,6 +37,10 @@ Rails.application.routes.draw do
   post 'manage/upload'
 
   get 'manage/push_notification'
+
+  post 'manage/transfor_address'
+
+  resources :locations
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
