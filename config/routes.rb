@@ -41,6 +41,10 @@ Rails.application.routes.draw do
   post 'manage/transfor_address'
 
   resources :locations
+
+  post 'locations/get_data'
+
+  post 'locations/get_data_from_my_position'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

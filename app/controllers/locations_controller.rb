@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   def index
     if params[:search].present?
-      @locations = Location.near(params[:search], 50, :order => :distance)
+      @locations = Location.near(params[:search], 1, :units => :km,  :order => :distance)
     else
       @locations = Location.all
     end
@@ -46,4 +46,22 @@ class LocationsController < ApplicationController
     @location.destroy
     redirect_to locations_url, :notice => "Successfully destroyed location."
   end
+
+  def get_autho
+  	render json: authenticity_token
+  end
+
+  def get_data
+    @locations = Location.all
+    # @location = @location.nearbys(10, :units => :km)   
+    render json: @locations
+  end
+
+  def get_data_from_my_position
+    @locations = Location.all
+    @locations = @locations.near([params[:latitude], params[:longitude]], 5, :units => :km)
+    render json: @locations
+  end
+
+  skip_before_action :verify_authenticity_token, :only => [:get_data, :get_data_from_my_position]
 end

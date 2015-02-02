@@ -151,4 +151,6 @@ class ManageController < ApplicationController
     # @geocode = location
     render plain: address
   end
+
+    
 end
